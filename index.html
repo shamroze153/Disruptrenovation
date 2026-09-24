@@ -4321,6 +4321,7 @@ function init() {
   camera.up.set(0, 0, 1);
   renderer = new THREE.WebGLRenderer({ antialias: QUAL.aa, preserveDrawingBuffer: false, powerPreference: "high-performance" });
   renderer.setPixelRatio(basePR());
+  renderer.debug.checkShaderErrors = false;        // v4.1: no synchronous shader-log reads (they stalled the page for seconds on every new material)
   renderer.shadowMap.enabled = QUAL.shadows;
   renderer.shadowMap.type = QUAL.soft ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
   renderer.shadowMap.autoUpdate = false;            // v4: baked, redrawn only when the sun or the shown floors change
@@ -4471,6 +4472,7 @@ function init() {
       if (renderer.compileAsync && renderer.extensions.has("KHR_parallel_shader_compile")) { try { await renderer.compileAsync(scene, camera); } catch (e) {} }
       await new Promise(r => setTimeout(r, 0));
       buildWalkScene();
+      await prewarmShaders();
       buildRoomLabels(); setLabels(mode && /cut/.test(mode) ? { cutGF: 0, cutFF: 1, cutSF: 2 }[mode] : false);
       if (ARCH.on) archSetCut(ARCH.cut);
       SH.sig = ""; invalidate(2000);
@@ -6469,6 +6471,20 @@ const W8 = { on: false, floor: "GF", x: 91.04, y: 1.04, z: 0, yaw: 0, pitch: 0, 
   bob: 0, tour: -1, tourAuto: false, tourTimer: 0, busy: false, prev: null, fly: false, vz: 0, jump: 0, lock: false };
 let floorGroups = {}, signGroups = {}, minimapImg = {}, walkBuilt = false;
 
+// v4.1: compile every material the walk / cutaway views use while the page is idle, so entering walk mode or
+// switching floors never has to stop for shader compilation
+async function prewarmShaders() {
+  const flip = [];
+  const show = (o) => { if (o && !o.visible) { o.visible = true; flip.push(o); } };
+  FLOORS.forEach(k => { show(floorGroups[k]); show(signGroups[k]); });
+  Object.values(groups).forEach(show);
+  try {
+    if (renderer.compileAsync && renderer.extensions.has("KHR_parallel_shader_compile")) await renderer.compileAsync(scene, camera);
+    else renderer.compile(scene, camera);
+  } catch (e) {}
+  flip.forEach(o => o.visible = false);
+  await new Promise(r => setTimeout(r, 0));
+}
 function buildWalkScene() {
   if (walkBuilt) return; walkBuilt = true;
   // porcelain floor tile: 4 x 4 tiles of 2'-0" per texture repeat
@@ -7454,7 +7470,7 @@ body.arch #archBtn{background:#1f3b57;color:#fff;border-color:#1f3b57}`;
 // floor culling in walk mode, frame stats. Tuned for a mid-range phone (Medium / Low) and a laptop (High).
 const QPRESET = {
   high:   { det: 1.0, prDesk: 2.0, prPhone: 1.5, shadows: true,  shadowSize: 2048, soft: true,  lamps: 6, trim: 0, peopleOrbit: true,  adjFloors: true },
-  medium: { det: 0.6, prDesk: 1.5, prPhone: 1.5, shadows: true,  shadowSize: 1024, soft: false, lamps: 2, trim: 1, peopleOrbit: true,  adjFloors: false },
+  medium: { det: 0.6, prDesk: 1.25, prPhone: 1.25, shadows: true,  shadowSize: 1024, soft: false, lamps: 2, trim: 1, peopleOrbit: true,  adjFloors: false },
   low:    { det: 0.4, prDesk: 1.0, prPhone: 1.25, shadows: false, shadowSize: 1024, soft: false, lamps: 0, trim: 2, peopleOrbit: false, adjFloors: false },
 };
 const QUAL = (() => {
@@ -7466,7 +7482,7 @@ const QUAL = (() => {
   const mobileUA = /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent), ipad = /iPad/.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
   const phone = (coarse || mobileUA) && minSide < 600 && !ipad, tablet = !phone && (ipad || (coarse && minSide >= 600));
   const mem = navigator.deviceMemory || (phone ? 4 : 8), cores = navigator.hardwareConcurrency || 4;
-  const autoLevel = phone ? (mem >= 8 && cores >= 8 ? "medium" : "low") : tablet ? "medium" : (mem <= 4 || cores <= 4 ? "medium" : "high");
+  const autoLevel = phone ? "low" : tablet ? "medium" : (mem <= 4 || cores <= 4 ? "low" : "medium");
   const Q = { pick, device: phone ? "phone" : tablet ? "tablet" : "desktop", autoLevel, mem, cores };
   Q.level = pick === "auto" ? autoLevel : pick;
   Object.assign(Q, QPRESET[Q.level]);
@@ -7475,7 +7491,7 @@ const QUAL = (() => {
   Q.prMax = Q.device === "desktop" ? Q.prDesk : Q.prPhone;
   return Q;
 })();
-const DR = { scale: 1, min: 0.55, frames: [], lastAdj: 0, lastEval: 0 };
+const DR = { scale: 1, min: 0.6, frames: [], lastAdj: 0, lastEval: 0, slow: 0 };
 const RG = { dirtyUntil: 0, lastRender: 0, lastBeat: 0, camSig: "", hidden: document.hidden, renders: 0, fpsShown: 0, frameMs: 0 };
 const SH = { sig: "", last: 0 };
 const LP = { lights: [] };
@@ -7518,12 +7534,18 @@ async function setQuality(pick) {
 }
 // dynamic resolution: keep the frame rate at the target by lowering the render scale, then raising it again
 function drSample(now, dt) {
-  DR.frames.push([now, dt]); while (DR.frames.length && now - DR.frames[0][0] > 1500) DR.frames.shift();
-  if (now - DR.lastEval < 1000 || DR.frames.length < 8) return;
+  // only frames drawn back to back while the view moves count (the 30 fps idle cap and pauses are not "slow")
+  if (dt > 250) { DR.frames.length = 0; return; }
+  DR.frames.push([now, dt]); while (DR.frames.length && now - DR.frames[0][0] > 2000) DR.frames.shift();
+  if (now - DR.lastEval < 1000 || DR.frames.length < 20) return;
   DR.lastEval = now;
-  const span = (DR.frames[DR.frames.length - 1][0] - DR.frames[0][0]) / 1000, fps = (DR.frames.length - 1) / Math.max(span, 1e-3);
-  if (fps < QUAL.target * 0.85 && DR.scale > DR.min) { DR.scale = Math.max(DR.min, DR.scale * 0.87); DR.lastAdj = now; applyPR(); }
-  else if (fps > QUAL.target * 1.15 && DR.scale < 1 && now - DR.lastAdj > 2500) { DR.scale = Math.min(1, DR.scale * 1.07); DR.lastAdj = now; applyPR(); }
+  const avg = DR.frames.reduce((a, f) => a + f[1], 0) / DR.frames.length, fps = 1000 / avg;
+  if (fps < QUAL.target * 0.7 && DR.scale > DR.min && now - DR.lastAdj > 2500) { DR.scale = Math.max(DR.min, Math.round(DR.scale * 0.85 * 20) / 20); DR.lastAdj = now; applyPR(); }
+  else if (fps > QUAL.target * 0.92 && DR.scale < 1 && now - DR.lastAdj > 4000) { DR.scale = Math.min(1, Math.round(DR.scale * 1.1 * 20) / 20); DR.lastAdj = now; applyPR(); }
+  // Auto: still far too slow at the lowest resolution -> step the quality down once (High -> Medium -> Low)
+  if (QUAL.pick === "auto" && DR.scale <= DR.min && fps < QUAL.target * 0.5) { if (++DR.slow >= 4) { DR.slow = 0; const nx = { high: "medium", medium: "low" }[QUAL.level];
+      if (nx) { QUAL.autoLevel = nx; perfToast("Lowering the quality so the viewer stays smooth…", 3500); setQuality("auto"); } } }
+  else DR.slow = 0;
 }
 // interior lights: the level's fixed number of point lights follows the nearest lamps, so moving between floors or
 // switching the lamps never changes the light count (a change would recompile every shader: the old "hang")
@@ -7571,15 +7593,15 @@ function perfShouldRender(now) {
   const moved = sig !== RG.camSig;
   if (moved || now < RG.dirtyUntil || light.playing) {
     if (!moved && !light.playing && now - RG.lastRender < 1000 / 30) return false;     // settling / idle: at most 30 fps
-    RG.camSig = sig; return true;
+    RG.camSig = sig; RG.movedFrame = moved; return true;
   }
-  if (now - RG.lastBeat > 1000) { RG.lastBeat = now; return true; }                       // 1 fps heartbeat when nothing happens
+  if (now - RG.lastBeat > 1000) { RG.lastBeat = now; RG.movedFrame = false; return true; }                       // 1 fps heartbeat when nothing happens
   return false;
 }
 function perfRendered(now) {
   const dt = RG.lastRender ? now - RG.lastRender : 16; RG.lastRender = now; RG.renders++;
   RG.frameMs = RG.frameMs * 0.9 + dt * 0.1;
-  if (now < RG.dirtyUntil || light.playing) drSample(now, dt);
+  if (RG.movedFrame || light.playing) drSample(now, dt);
 }
 // ---- UI: quality buttons, stats overlay, toast
 function perfToast(msg, ms) {
@@ -9125,6 +9147,7 @@ window.__bench = (n = 5) => { const gl = renderer.getContext(), px = new Uint8Ar
   for (let k = 0; k < n + 1; k++) { renderer.info.reset(); const t0 = performance.now(); cullBegin(); lampPoolUpdate(); if (ARCH.on) { archFrame(); archRender(); } else renderer.render(scene, camera); cullEnd(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
     if (k) { t += performance.now() - t0; calls = renderer.info.render.calls; tris = renderer.info.render.triangles; } }
   renderer.info.autoReset = ai; return { ms: t / n, calls, triangles: tris, level: QUAL.level, pr: renderer.getPixelRatio(), size: [renderer.domElement.width, renderer.domElement.height] }; };
+window.__renders = () => RG.renders;
 window.__perf = () => { const i = renderer.info; let meshes = 0, inst = 0, instN = 0, tris = 0;
   scene.traverse(o => { if (o.isMesh) { meshes++; if (o.isInstancedMesh) { inst++; instN += o.count; } } });
   return { calls: i.render.calls, triangles: i.render.triangles, points: i.render.points, lines: i.render.lines, geometries: i.memory.geometries, textures: i.memory.textures,

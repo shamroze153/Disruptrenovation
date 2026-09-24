@@ -19,6 +19,14 @@ Made by **Engr. Shamroze Nasir**. The verified v3.4 geometry is unchanged: walls
 
 **Testing note (read this before quoting fps):** every test ran in headless Chromium with **SwiftShader, a software WebGL renderer with no GPU**. Draw calls, triangles, textures, file sizes and load times are exact. Frame times are only useful as before/after *ratios*. Real phone and laptop fps were **not measured**, because no physical device was available. Check them on a real mid-range Android phone (menu → *Show frame rate and draw calls*, or `?stats=1`).
 
+
+## v4.1 — performance fix (hanging and lag)
+- **Shader compilation no longer freezes the page.** three.js read the shader logs synchronously every time a new material was used (entering walk mode, changing floors), which forced the browser to wait for each compile. That is now off, and the walk-mode materials are compiled in the background right after loading. In the test this removed about 19 s of blocking.
+- **Dynamic resolution bug fixed.** Frames capped at 30 fps while idle were counted as "slow", so the resolution kept dropping and the canvas was resized every second while you moved, which caused stutter. Only real, back-to-back frames count now, and the resolution comes back up.
+- **Auto quality is lighter.** Laptops now start on **Medium** (not High) and phones on **Low**. If a device is still too slow, Auto steps down on its own. High is still available in the panel.
+- **Offline cache:** the page is now fetched from the network first, so a new deploy shows up immediately.
+- If a browser still shows the old version: hard refresh once (Ctrl+Shift+R), or clear the site data.
+
 ---
 
 ## Phase 1 — Performance
