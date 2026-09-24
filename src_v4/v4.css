@@ -1,0 +1,141 @@
+/* ================================================================ v4.0 — shared bits */
+#moreBtn{pointer-events:auto;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;font-size:14px;font-weight:650;cursor:pointer;backdrop-filter:blur(10px)}
+#topMenu{position:fixed;right:16px;top:calc(70px + env(safe-area-inset-top,0px));z-index:12;min-width:230px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 90px);overflow:auto;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.18);backdrop-filter:blur(12px);display:none}
+#topMenu.open{display:block}
+#topMenu button,#topMenu a{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;font-size:14.5px;padding:11px 12px;min-height:44px;border:0;border-radius:9px;background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
+#topMenu button:hover,#topMenu a:hover{background:rgba(47,93,124,.1)}
+#topMenu hr{border:0;border-top:1px solid var(--line);margin:4px 6px}
+#topMenu .mi{width:22px;text-align:center;flex:none}
+#sheetHandle{display:none}
+/* touch: at least 44 x 44 px targets and 14 px text */
+@media (pointer:coarse){
+  .grid button,#qualBtns button,#archBar button,#dmTabs button,#dmZoom button,#floorTabs button,#tourBtns button,#dmCard button,#stairPrompt button,.wbtn,#mapBtn,#walkBtn,#archBtn,#flyBtn,#moreBtn{min-height:44px;font-size:14px}
+  #floorTabs button,#dmZoom button{min-width:44px}
+  .row{min-height:44px;font-size:14px}
+  .row input,#archBar input[type=checkbox]{width:20px;height:20px}
+  #archBar label{min-height:44px}
+  #clock{height:44px;border:0;background-size:100% 12px;background-position:center;background-repeat:no-repeat;border-radius:0} #clock::-webkit-slider-thumb{width:28px;height:28px} #month{min-height:44px;font-size:14px}
+  #walkTouch .wbtn{font-size:14px!important}
+  #dmSearch{font-size:16px;min-height:44px}
+  #play{width:44px;height:44px}
+  #routeBar button{min-width:44px;min-height:44px}
+  .kb{display:none!important}
+  #perfToast{font-size:14px!important}
+  #whereBtn,#sosBtn,#flyBtn,#archBtn,#walkExit,.wbtn{min-height:44px!important;min-width:44px!important}
+  label.row{min-height:44px!important}
+  #floorSw span{font-size:14px!important}
+  .solT,.solT td,.solT th{font-size:14px!important}
+}
+@media (pointer:fine){ .touch{display:none!important} }
+
+/* ================================================================ phones (portrait and landscape) */
+@media (max-width:820px), (max-height:500px) and (pointer:coarse){
+  /* compact top bar */
+  #hud{padding:calc(8px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 8px calc(10px + env(safe-area-inset-left,0px));gap:6px;align-items:center}
+  #hud .brand h1,#hud .brand p{display:none}
+  #hud .brand{padding:6px 8px;gap:0}
+  #hud{justify-content:flex-start}
+  #hud .brand{margin-right:auto}
+  #mapBtn,#walkBtn,#archBtn,#flyBtn,#moreBtn,#whereBtn,#sosBtn{padding:10px 11px!important;font-size:14px!important;margin:0!important;white-space:nowrap;min-width:44px;min-height:44px}
+  #hud .brand .mark{font-size:14px}
+  #hud .lbl{display:none}
+  #archBtn,#flyBtn{display:none!important}
+  #panelToggle{display:none!important}
+  #readout{display:none!important}
+  #compass{top:calc(64px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));width:40px;height:40px}
+  /* left panel becomes a bottom sheet */
+  #panel{display:block!important;position:fixed;left:0!important;right:0!important;top:auto!important;bottom:0!important;width:auto!important;
+    height:min(86dvh,760px);max-height:none!important;border-radius:16px 16px 0 0;padding:0 14px calc(14px + env(safe-area-inset-bottom,0px));
+    padding-left:calc(14px + env(safe-area-inset-left,0px));padding-right:calc(14px + env(safe-area-inset-right,0px));
+    transform:translateY(calc(100% - var(--peek,62px)));transition:transform .28s cubic-bezier(.2,.8,.2,1);overflow:hidden;z-index:9;
+    box-shadow:0 -8px 28px rgba(0,0,0,.16);touch-action:none}
+  #panel.dragging{transition:none}
+  #panel.half{transform:translateY(46%)} #panel.full{transform:translateY(0)}
+  #panel .sheetBody{height:calc(100% - 58px);overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;padding-bottom:30px}
+  #sheetHandle{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0 10px;cursor:grab;touch-action:none;user-select:none}
+  #sheetHandle i{width:42px;height:5px;border-radius:3px;background:rgba(27,31,35,.25)}
+  #sheetHandle span{font-size:14px;font-weight:600;color:var(--muted)}
+  #panel h2{font-size:14px;letter-spacing:.04em}
+  #sunTxt,#riseTxt,.tb-meta span{font-size:14px}
+  #credit{font-size:14px!important;padding:5px 9px!important}
+  #walkBtn2{display:none}
+  /* the time of day lives in the sheet on phones */
+  #panel #timebar{position:static!important;width:auto!important;margin:0 0 14px;box-shadow:none}
+  #credit{left:calc(10px + env(safe-area-inset-left,0px))!important;right:auto!important;bottom:calc(var(--peek,62px) + 8px + env(safe-area-inset-bottom,0px))!important}
+  body.walking #credit{bottom:auto!important;top:calc(58px + env(safe-area-inset-top,0px))!important;left:auto!important;right:calc(10px + env(safe-area-inset-right,0px))!important}
+  #topMenu{top:calc(58px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px))}
+  #loadPill{bottom:calc(var(--peek,62px) + 10px + env(safe-area-inset-bottom,0px))}
+  #perfToast{bottom:calc(var(--peek,62px) + 50px)}
+
+  /* walk mode */
+  #walkTop{top:calc(8px + env(safe-area-inset-top,0px));left:calc(8px + env(safe-area-inset-left,0px));right:calc(8px + env(safe-area-inset-right,0px));gap:6px}
+  .wgroup{gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  #walkTop .wbtn{padding:9px 10px;font-size:13.5px}
+  #walkTop .wlbl{display:none}
+  #walkArch,#walkDay,#walkTour{display:none!important}
+  #walkMore{display:inline-flex!important}
+  #walkTop .wbtn{min-width:46px;min-height:46px;font-size:15px}
+  #roomSub{font-size:14px!important}
+  #roomCard{top:calc(62px + env(safe-area-inset-top,0px));max-width:calc(100vw - 24px);padding:7px 14px 8px}
+  #roomName{font-size:16px} #roomSub{font-size:12px}
+  #walkHint{top:calc(128px + env(safe-area-inset-top,0px));font-size:14px}
+  #routeBar{top:calc(118px + env(safe-area-inset-top,0px));font-size:13.5px;left:12px;right:12px;transform:none;max-width:none}
+  #routeBar.show{transform:none}
+  /* minimap: small, top-left under the room card area; tap opens the full map */
+  #mapBox{left:auto;right:calc(8px + env(safe-area-inset-right,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));padding:6px;border-radius:10px}
+  #minimap{width:132px}
+  #floorTabs span{display:none}
+  /* joystick bottom-left, look anywhere else, run + floor buttons bottom-right */
+  #joy{left:calc(18px + env(safe-area-inset-left,0px));right:auto;bottom:calc(22px + env(safe-area-inset-bottom,0px));width:132px;height:132px}
+  #flyBtns{right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  #stairPrompt{bottom:calc(170px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 24px);flex-wrap:wrap;justify-content:center}
+  #tourCard{width:auto;left:10px;right:10px;transform:translateY(16px)} #tourCard.show{transform:none}
+  #tourBtns{flex-wrap:wrap}
+  /* architect bar: one scrolling row on phones */
+  #archBar{left:0!important;right:0;transform:none!important;bottom:0!important;max-width:none!important;border-radius:14px 14px 0 0;flex-wrap:nowrap!important;overflow-x:auto;justify-content:flex-start!important;
+    padding:8px calc(10px + env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) calc(10px + env(safe-area-inset-left,0px))!important;-webkit-overflow-scrolling:touch}
+  #archBar .grp{flex:none}
+  #archCutNote,#archTagCount{display:none}
+  body.arch:not(.walking) #panel{transform:translateY(100%)}
+  body.arch:not(.walking) #credit{bottom:calc(70px + env(safe-area-inset-bottom,0px))!important}
+  #archInfo{top:calc(60px + env(safe-area-inset-top,0px));bottom:auto!important;right:10px;left:10px;max-width:none}
+  /* building map */
+  .dm-head{gap:6px;padding:calc(8px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 8px calc(10px + env(safe-area-inset-left,0px))}
+  .dm-head h2{display:none}
+  #dmSearch{order:5;flex-basis:100%}
+  #dmLegend{display:none}
+  #dmCredit{display:none}
+  .dm-foot{padding:8px calc(10px + env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) calc(10px + env(safe-area-inset-left,0px))}
+  #dmCard{flex-wrap:wrap;gap:8px} #dmCard div{flex-basis:100%}
+  #dmCard button{flex:1;min-height:46px}
+}
+/* phone in landscape: sheet narrower, placed at the left, so the model stays visible */
+@media (max-height:500px) and (pointer:coarse) and (orientation:landscape){
+  #panel{left:auto!important;right:auto!important;width:min(380px,58vw)!important;height:calc(100dvh - 8px);margin-left:env(safe-area-inset-left,0px)}
+  #panel.half{transform:translateY(40%)}
+  #minimap{width:110px}
+  #joy{width:112px;height:112px}
+  #roomCard{top:calc(8px + env(safe-area-inset-top,0px));left:50%;max-width:calc(100vw - 330px)}
+  #roomName{font-size:15px}
+  #walkTouch{flex-direction:row!important;right:calc(160px + env(safe-area-inset-right,0px))!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important}
+  #flyBtns{flex-direction:row!important;right:calc(160px + env(safe-area-inset-right,0px))!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important}
+  #walkHint{top:calc(66px + env(safe-area-inset-top,0px))}
+  #routeBar{top:calc(66px + env(safe-area-inset-top,0px))}
+  #stairPrompt{bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+}
+/* tablets: keep the side panel but make it touch friendly */
+@media (min-width:821px) and (pointer:coarse){
+  #panel{width:300px}
+}
+
+#walkMore{display:none}
+/* touch screens: every control at least 44 x 44 px and all text at least 14 px (these override the module styles) */
+@media (pointer:coarse){
+  #qualBtns button,#archBar button,#dmClose,#walkBtn2,#moreBtn,#archExit{min-height:44px!important;min-width:44px!important;font-size:14px!important}
+  #archBar label,#dmUnderL{min-height:44px!important;display:inline-flex!important;align-items:center;gap:6px;font-size:14px!important}
+  #archBar,#archBar *,#archLegend,#archLegend *,#archInfo,#archInfo *{font-size:14px!important}
+  #dmZoomLevel,#dmMore b,#dmMore button,#dmLegend span,#dmCredit,#qualNote,#sunTxt,#riseTxt,.tb-meta span,#viewName,#roomSub,#floorTabs span,#credit,#credit b{font-size:14px!important}
+  #panel h2,#hud .brand p,#hud .brand .mark{font-size:14px!important}
+  #viewName{min-height:44px;display:inline-flex;align-items:center}
+}

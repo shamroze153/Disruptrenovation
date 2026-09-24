@@ -1,4 +1,16 @@
-# Disrupt 141-C — Complete Project Archive (v3.4)
+# Disrupt 141-C — Complete Project Archive (v4.0)
+
+> **v4.0 (September 2026).** Open `Disrupt_141C_viewer_v4.0.html` (or `index.html`) and read `HANDOFF_v4.md`.
+> - Performance: adaptive quality, baked shadows, render on demand; 3.4 MB instead of 5.5 MB.
+> - Phone and tablet layout.
+> - Wayfinding: "Where to?", bird's-eye follow, auto-walk, emergency exit, deep links and QR codes.
+> - Rooftop solar concept, with the honest result: 27 modules on the RCC grid, 147 with the options; 210 do not fit.
+> - Floor switcher, share link, PWA, accessibility, Urdu/English, PNG export.
+> - The verified v3.4 walls, rooms and data are unchanged (byte-identical data files).
+
+> The v3 archive folders (02–10, HANDOFF v2/v3) are in the separate `Disrupt_141C_v4.0_archive_v3.zip`. The old standalone viewers (v1–v3.2) were removed; v4.0 replaces them.
+
+# (v3.4 notes)
 
 > **v3.4 update (September 2026).** Building map fixes only; the 3D model is unchanged.
 > - Six rooms (GF courtyard, board room, male toilet; FF workstation 16'-6" × 11'-8"; SF male bath, rooftop cafeteria) now colour their whole drawn outline, within ±10 % of the drawn area.

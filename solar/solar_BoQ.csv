@@ -1,0 +1,36 @@
+Scope,Item,Quantity,Unit
+"A+B (RCC grid, rules met)","PV module 645 Wp bifacial, 2384x1303x35 mm, 34 kg",27,no.
+"A+B (RCC grid, rules met)","Column SHS 150x150x6 HDG, base plate 350x350x20 + 4 M20 chemical anchors into the RCC column head",14,no.
+"A+B (RCC grid, rules met)","  columns, total length",34.1,m
+"A+B (RCC grid, rules met)","ISMB 200, HDG",44.1,m
+"A+B (RCC grid, rules met)","ISMC 125, HDG",52.2,m
+"A+B (RCC grid, rules met)","C 100x50x20x2.5 (rafter), HDG",42.1,m
+"A+B (RCC grid, rules met)","SHS 50x50x3 (post), HDG",9.2,m
+"A+B (RCC grid, rules met)","C 100x50x20x2.0 (purlin), HDG",130.7,m
+"A+B (RCC grid, rules met)","Structural steel, total (+10 % plates, cleats, bracing)",3.7,t
+"A+B (RCC grid, rules met)","Module clamps (mid + end), Al with SS bolts",66,no.
+"A+B (RCC grid, rules met)","Catwalk 2'-6"" (760 mm) HDG grating with handrail",0,m
+All zones (A+B+C+W),"PV module 645 Wp bifacial, 2384x1303x35 mm, 34 kg",147,no.
+All zones (A+B+C+W),"Column SHS 150x150x6 HDG, base plate 350x350x20 + 4 M20 chemical anchors into the RCC column head",47,no.
+All zones (A+B+C+W),"  columns, total length",114.6,m
+All zones (A+B+C+W),"ISMB 200, HDG",161.3,m
+All zones (A+B+C+W),"ISMC 125, HDG",423.5,m
+All zones (A+B+C+W),"C 100x50x20x2.5 (rafter), HDG",270.0,m
+All zones (A+B+C+W),"SHS 50x50x3 (post), HDG",56.9,m
+All zones (A+B+C+W),"C 100x50x20x2.0 (purlin), HDG",486.1,m
+All zones (A+B+C+W),"Structural steel, total (+10 % plates, cleats, bracing)",17.17,t
+All zones (A+B+C+W),"Module clamps (mid + end), Al with SS bolts",352,no.
+All zones (A+B+C+W),"Catwalk 2'-6"" (760 mm) HDG grating with handrail",101.0,m
+Electrical (all zones),"String inverter, 3-phase 400 V, 1100 V DC max, >= 4 MPPT, >= 20 A per string input, IP66",40 kW + 50 kW,
+Electrical (all zones),DCDB: DC isolator 1000 V 32 A per string + Type II DC SPD 1000 V,8,string ways
+Electrical (all zones),"PV cable 6 mm2 H1Z2Z2-K / PV1-F (red + black), MC4 connectors",443,m
+Electrical (all zones),"ACDB: 2 x MCCB 4P (80 A / 100 A), outgoing MCCB 4P 160 A, Type II AC SPD, meter",1,set
+Electrical (all zones),AC cable 4C x 70 mm2 Cu XLPE/SWA + 1C x 35 mm2 PE (roof to LT panel),30,m
+Electrical (all zones),Inverter AC tails 4C x 16 / 4C x 25 mm2 Cu,6,m
+Electrical (all zones),Cable tray HDG perforated 150x50 / 200x50 with covers,90,m
+Electrical (all zones),"GI trunking for the AC riser, 150x100",11,m
+Electrical (all zones),"Earth pits, 3 m Cu-bonded rod, test chamber (DC / AC / LA), <= 5 ohm, bonded",3,no.
+Electrical (all zones),"Bonding: 16 mm2 Cu (structure, module frames via WEEB/earth clips), 25 x 3 mm Cu tape",lot,
+Electrical (all zones),ESE lightning arrester (dT >= 30 us) on 5 m GI mast + 70 mm2 Cu down conductor,1,set
+Electrical (all zones),"Water point: 3/4"" GI line from the booster pump, tap + 30 m hose reel (RO / soft water for cleaning)",1,set
+Electrical (all zones),"Monitoring: inverter Wi-Fi / 4G dongle, export limiter / zero-export meter (generator interlock)",1,set

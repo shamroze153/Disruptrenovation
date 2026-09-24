@@ -1,0 +1,46 @@
+{
+ "ghi_year": 2001,
+ "poa_year_15deg": 2131,
+ "dc_before_losses": 1907,
+ "losses": {
+  "soiling": 5.0,
+  "mismatch": 2.0,
+  "dc_wiring": 1.5,
+  "ac_wiring": 1.0,
+  "grid_outage_load_shedding": 3.0,
+  "lid_first_year": 1.5
+ },
+ "inverter_eff": 0.98,
+ "bifacial_gain": 0.05,
+ "specific_yield_monofacial": 1621,
+ "specific_yield_bifacial": 1702,
+ "pr": 0.761,
+ "monthly_kwh_per_kwp": [
+  129.9,
+  133.2,
+  161.8,
+  162.9,
+  167.1,
+  150.0,
+  131.5,
+  127.6,
+  143.0,
+  146.7,
+  126.5,
+  122.1
+ ],
+ "monthly_ghi": [
+  130.5,
+  142.6,
+  186.7,
+  202.2,
+  217.8,
+  198.6,
+  170.2,
+  161.2,
+  172.2,
+  165.0,
+  132.1,
+  121.5
+ ]
+}

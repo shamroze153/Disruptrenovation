@@ -1,0 +1,17 @@
+{
+  "name": "Disrupt 141-C — 3D building viewer",
+  "short_name": "Disrupt 141-C",
+  "description": "Walk through the Disrupt 141-C building, find any department, see the rooftop solar concept. Made by Engr. Shamroze Nasir.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#e9e6df",
+  "theme_color": "#2f5d7c",
+  "lang": "en",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

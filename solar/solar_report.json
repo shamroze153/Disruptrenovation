@@ -1,0 +1,519 @@
+{
+ "KINDS": {
+  "2P": {
+   "n": 2.0,
+   "slant": 15.71,
+   "pitch": 4.34,
+   "proj": 15.17,
+   "rise": 4.07,
+   "gap": 6.11,
+   "row_pitch": 21.29
+  },
+  "3L": {
+   "n": 3.0,
+   "slant": 12.96,
+   "pitch": 7.89,
+   "proj": 12.51,
+   "rise": 3.35,
+   "gap": 5.04,
+   "row_pitch": 17.56
+  },
+  "2L": {
+   "n": 2.0,
+   "slant": 8.62,
+   "pitch": 7.89,
+   "proj": 8.32,
+   "rise": 2.23,
+   "gap": 3.35,
+   "row_pitch": 11.67
+  },
+  "1P": {
+   "n": 1.0,
+   "slant": 7.82,
+   "pitch": 4.34,
+   "proj": 7.56,
+   "rise": 2.02,
+   "gap": 3.04,
+   "row_pitch": 10.6
+  }
+ },
+ "areas": {
+  "deck35": 10676,
+  "setback_usable": 8160,
+  "usable_after_obstructions": 7734,
+  "usable_no_sheet": 5653,
+  "sheet_zone": 2690,
+  "courtyard": 652,
+  "mumty": 184,
+  "skylight": 60,
+  "door": 37
+ },
+ "zones": [
+  {
+   "id": "A",
+   "name": "East RCC block roof (+35'-3\")",
+   "base": true,
+   "roof": 35.25,
+   "modules": 18,
+   "kwp": 11.61,
+   "kind": "3L",
+   "area": 1102
+  },
+  {
+   "id": "B",
+   "name": "South bay over reception / masjid (+35'-3\")",
+   "base": true,
+   "roof": 35.25,
+   "modules": 9,
+   "kwp": 5.8,
+   "kind": "3L",
+   "area": 315
+  },
+  {
+   "id": "D",
+   "name": "South-east single-storey roof (+12'-5\")",
+   "base": true,
+   "roof": 12.417,
+   "modules": 0,
+   "kwp": 0.0,
+   "kind": null,
+   "area": 143
+  },
+  {
+   "id": "C",
+   "name": "Option C: canopy over the rooftop cafeteria (asbestos-sheet zone)",
+   "base": false,
+   "roof": 35.25,
+   "modules": 41,
+   "kwp": 26.45,
+   "kind": "1P/2L/2P",
+   "area": 2055
+  },
+  {
+   "id": "W",
+   "name": "Option W: west block roof (load-bearing walls, no RCC columns)",
+   "base": false,
+   "roof": 35.25,
+   "modules": 79,
+   "kwp": 50.96,
+   "kind": "1P/2P",
+   "area": 4017
+  }
+ ],
+ "counts": {
+  "base": 27,
+  "all": 147,
+  "target": 210,
+  "kwp_base": 17.41,
+  "kwp_all": 94.82
+ },
+ "inv": [
+  {
+   "id": "INV-1",
+   "zones": [
+    "A",
+    "B",
+    "C"
+   ],
+   "modules": 68,
+   "kwp": 43.86,
+   "strings": [
+    17,
+    17,
+    17,
+    17
+   ],
+   "ac_kw": 40,
+   "dc_ac": 1.1,
+   "iac": 58.3
+  },
+  {
+   "id": "INV-2",
+   "zones": [
+    "W"
+   ],
+   "modules": 79,
+   "kwp": 50.95,
+   "strings": [
+    20,
+    20,
+    20,
+    19
+   ],
+   "ac_kw": 50,
+   "dc_ac": 1.02,
+   "iac": 72.9
+  }
+ ],
+ "strings": [
+  {
+   "id": "1.1",
+   "inv": "INV-1",
+   "n": 17,
+   "zones": [
+    "A"
+   ],
+   "voc_cold": 811,
+   "vmp_hot": 547,
+   "vmp_stc": 639,
+   "run_ft": 39,
+   "vd_pct": 0.25
+  },
+  {
+   "id": "1.2",
+   "inv": "INV-1",
+   "n": 17,
+   "zones": [
+    "A",
+    "B",
+    "C"
+   ],
+   "voc_cold": 811,
+   "vmp_hot": 547,
+   "vmp_stc": 639,
+   "run_ft": 75,
+   "vd_pct": 0.48
+  },
+  {
+   "id": "1.3",
+   "inv": "INV-1",
+   "n": 17,
+   "zones": [
+    "C"
+   ],
+   "voc_cold": 811,
+   "vmp_hot": 547,
+   "vmp_stc": 639,
+   "run_ft": 86,
+   "vd_pct": 0.55
+  },
+  {
+   "id": "1.4",
+   "inv": "INV-1",
+   "n": 17,
+   "zones": [
+    "C"
+   ],
+   "voc_cold": 811,
+   "vmp_hot": 547,
+   "vmp_stc": 639,
+   "run_ft": 110,
+   "vd_pct": 0.7
+  },
+  {
+   "id": "2.1",
+   "inv": "INV-2",
+   "n": 20,
+   "zones": [
+    "W"
+   ],
+   "voc_cold": 954,
+   "vmp_hot": 643,
+   "vmp_stc": 752,
+   "run_ft": 82,
+   "vd_pct": 0.44
+  },
+  {
+   "id": "2.2",
+   "inv": "INV-2",
+   "n": 20,
+   "zones": [
+    "W"
+   ],
+   "voc_cold": 954,
+   "vmp_hot": 643,
+   "vmp_stc": 752,
+   "run_ft": 79,
+   "vd_pct": 0.43
+  },
+  {
+   "id": "2.3",
+   "inv": "INV-2",
+   "n": 20,
+   "zones": [
+    "W"
+   ],
+   "voc_cold": 954,
+   "vmp_hot": 643,
+   "vmp_stc": 752,
+   "run_ft": 118,
+   "vd_pct": 0.64
+  },
+  {
+   "id": "2.4",
+   "inv": "INV-2",
+   "n": 19,
+   "zones": [
+    "W"
+   ],
+   "voc_cold": 906,
+   "vmp_hot": 611,
+   "vmp_stc": 714,
+   "run_ft": 138,
+   "vd_pct": 0.79
+  }
+ ],
+ "nmax": 23,
+ "nmin": 15,
+ "voc_cold_1": 47.71,
+ "vmp_hot_1": 32.15,
+ "ac_kw": 90,
+ "i_ac": 131.2,
+ "l_ac_m": 29.9,
+ "vd_ac": 0.93,
+ "dc_len_m": 443,
+ "boq_base": [
+  [
+   "PV module 645 Wp bifacial, 2384x1303x35 mm, 34 kg",
+   27,
+   "no."
+  ],
+  [
+   "Column SHS 150x150x6 HDG, base plate 350x350x20 + 4 M20 chemical anchors into the RCC column head",
+   14,
+   "no."
+  ],
+  [
+   "  columns, total length",
+   34.1,
+   "m"
+  ],
+  [
+   "ISMB 200, HDG",
+   44.1,
+   "m"
+  ],
+  [
+   "ISMC 125, HDG",
+   52.2,
+   "m"
+  ],
+  [
+   "C 100x50x20x2.5 (rafter), HDG",
+   42.1,
+   "m"
+  ],
+  [
+   "SHS 50x50x3 (post), HDG",
+   9.2,
+   "m"
+  ],
+  [
+   "C 100x50x20x2.0 (purlin), HDG",
+   130.7,
+   "m"
+  ],
+  [
+   "Structural steel, total (+10 % plates, cleats, bracing)",
+   3.7,
+   "t"
+  ],
+  [
+   "Module clamps (mid + end), Al with SS bolts",
+   66,
+   "no."
+  ],
+  [
+   "Catwalk 2'-6\" (760 mm) HDG grating with handrail",
+   0,
+   "m"
+  ]
+ ],
+ "boq_all": [
+  [
+   "PV module 645 Wp bifacial, 2384x1303x35 mm, 34 kg",
+   147,
+   "no."
+  ],
+  [
+   "Column SHS 150x150x6 HDG, base plate 350x350x20 + 4 M20 chemical anchors into the RCC column head",
+   47,
+   "no."
+  ],
+  [
+   "  columns, total length",
+   114.6,
+   "m"
+  ],
+  [
+   "ISMB 200, HDG",
+   161.3,
+   "m"
+  ],
+  [
+   "ISMC 125, HDG",
+   423.5,
+   "m"
+  ],
+  [
+   "C 100x50x20x2.5 (rafter), HDG",
+   270.0,
+   "m"
+  ],
+  [
+   "SHS 50x50x3 (post), HDG",
+   56.9,
+   "m"
+  ],
+  [
+   "C 100x50x20x2.0 (purlin), HDG",
+   486.1,
+   "m"
+  ],
+  [
+   "Structural steel, total (+10 % plates, cleats, bracing)",
+   17.17,
+   "t"
+  ],
+  [
+   "Module clamps (mid + end), Al with SS bolts",
+   352,
+   "no."
+  ],
+  [
+   "Catwalk 2'-6\" (760 mm) HDG grating with handrail",
+   101.0,
+   "m"
+  ]
+ ],
+ "kg_base": 3362,
+ "kg_all": 15609,
+ "elec": [
+  [
+   "String inverter, 3-phase 400 V, 1100 V DC max, >= 4 MPPT, >= 20 A per string input, IP66",
+   "40 kW + 50 kW",
+   ""
+  ],
+  [
+   "DCDB: DC isolator 1000 V 32 A per string + Type II DC SPD 1000 V",
+   8,
+   "string ways"
+  ],
+  [
+   "PV cable 6 mm2 H1Z2Z2-K / PV1-F (red + black), MC4 connectors",
+   443,
+   "m"
+  ],
+  [
+   "ACDB: 2 x MCCB 4P (80 A / 100 A), outgoing MCCB 4P 160 A, Type II AC SPD, meter",
+   1,
+   "set"
+  ],
+  [
+   "AC cable 4C x 70 mm2 Cu XLPE/SWA + 1C x 35 mm2 PE (roof to LT panel)",
+   30,
+   "m"
+  ],
+  [
+   "Inverter AC tails 4C x 16 / 4C x 25 mm2 Cu",
+   6,
+   "m"
+  ],
+  [
+   "Cable tray HDG perforated 150x50 / 200x50 with covers",
+   90,
+   "m"
+  ],
+  [
+   "GI trunking for the AC riser, 150x100",
+   11,
+   "m"
+  ],
+  [
+   "Earth pits, 3 m Cu-bonded rod, test chamber (DC / AC / LA), <= 5 ohm, bonded",
+   3,
+   "no."
+  ],
+  [
+   "Bonding: 16 mm2 Cu (structure, module frames via WEEB/earth clips), 25 x 3 mm Cu tape",
+   "lot",
+   ""
+  ],
+  [
+   "ESE lightning arrester (dT >= 30 us) on 5 m GI mast + 70 mm2 Cu down conductor",
+   1,
+   "set"
+  ],
+  [
+   "Water point: 3/4\" GI line from the booster pump, tap + 30 m hose reel (RO / soft water for cleaning)",
+   1,
+   "set"
+  ],
+  [
+   "Monitoring: inverter Wi-Fi / 4G dongle, export limiter / zero-export meter (generator interlock)",
+   1,
+   "set"
+  ]
+ ],
+ "yield_": {
+  "ghi_year": 2001,
+  "poa_year_15deg": 2131,
+  "dc_before_losses": 1907,
+  "losses": {
+   "soiling": 5.0,
+   "mismatch": 2.0,
+   "dc_wiring": 1.5,
+   "ac_wiring": 1.0,
+   "grid_outage_load_shedding": 3.0,
+   "lid_first_year": 1.5
+  },
+  "inverter_eff": 0.98,
+  "bifacial_gain": 0.05,
+  "specific_yield_monofacial": 1621,
+  "specific_yield_bifacial": 1702,
+  "pr": 0.761,
+  "monthly_kwh_per_kwp": [
+   129.9,
+   133.2,
+   161.8,
+   162.9,
+   167.1,
+   150.0,
+   131.5,
+   127.6,
+   143.0,
+   146.7,
+   126.5,
+   122.1
+  ],
+  "monthly_ghi": [
+   130.5,
+   142.6,
+   186.7,
+   202.2,
+   217.8,
+   198.6,
+   170.2,
+   161.2,
+   172.2,
+   165.0,
+   132.1,
+   121.5
+  ]
+ },
+ "shade": {
+  "dec": 0.0,
+  "jun": 0.0
+ },
+ "cols": 47,
+ "cols_new": 33,
+ "mod": {
+  "p": 645,
+  "voc": 44.9,
+  "isc": 18.3,
+  "vmp": 37.6,
+  "imp": 17.16,
+  "b_voc": -0.25,
+  "b_vmp": -0.29,
+  "g_p": -0.34,
+  "noct": 43,
+  "bifaciality": 0.7,
+  "L": 2384,
+  "W": 1303,
+  "T": 35,
+  "kg": 34,
+  "cells": "132 half-cut (210 mm)"
+ },
+ "tmin": 0.0,
+ "tcell": 75.0
+}

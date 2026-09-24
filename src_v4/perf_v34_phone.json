@@ -1,0 +1,138 @@
+{
+ "label": "v34_phone",
+ "html_MB": 5.5,
+ "domcontent_s": 15.9,
+ "first_view_s": 32.5,
+ "ready_s": 32.5,
+ "scenes": [
+  {
+   "scene": "orbit (front 3/4)",
+   "calls": 297,
+   "triangles": 3729640,
+   "points": 0,
+   "lines": 0,
+   "geometries": 293,
+   "textures": 28,
+   "programs": 26,
+   "meshes": 321,
+   "instancedMeshes": 253,
+   "instances": 5394,
+   "pixelRatio": 2,
+   "size": [
+    824,
+    1830
+   ],
+   "shadowMap": 1024,
+   "shadows": true,
+   "bench": {
+    "ms": 54177.100000000246,
+    "calls": 354,
+    "triangles": 3986524,
+    "level": "v3.4",
+    "pr": 2,
+    "size": [
+     824,
+     1830
+    ]
+   }
+  },
+  {
+   "scene": "walk (reception)",
+   "calls": 240,
+   "triangles": 3453730,
+   "points": 0,
+   "lines": 0,
+   "geometries": 294,
+   "textures": 40,
+   "programs": 42,
+   "meshes": 321,
+   "instancedMeshes": 253,
+   "instances": 5394,
+   "pixelRatio": 2,
+   "size": [
+    824,
+    1830
+   ],
+   "shadowMap": 1024,
+   "shadows": true,
+   "bench": {
+    "ms": 40902.06666666704,
+    "calls": 298,
+    "triangles": 3710686,
+    "level": "v3.4",
+    "pr": 2,
+    "size": [
+     824,
+     1830
+    ]
+   }
+  },
+  {
+   "scene": "walk (FF workstations)",
+   "calls": 159,
+   "triangles": 2820018,
+   "points": 0,
+   "lines": 0,
+   "geometries": 294,
+   "textures": 43,
+   "programs": 57,
+   "meshes": 321,
+   "instancedMeshes": 253,
+   "instances": 5394,
+   "pixelRatio": 2,
+   "size": [
+    824,
+    1830
+   ],
+   "shadowMap": 1024,
+   "shadows": true,
+   "bench": {
+    "ms": 52901.30000000013,
+    "calls": 217,
+    "triangles": 3076974,
+    "level": "v3.4",
+    "pr": 2,
+    "size": [
+     824,
+     1830
+    ]
+   }
+  },
+  {
+   "scene": "architect (GF cut)",
+   "calls": 1,
+   "triangles": 2,
+   "points": 0,
+   "lines": 0,
+   "geometries": 302,
+   "textures": 52,
+   "programs": 79,
+   "meshes": 336,
+   "instancedMeshes": 257,
+   "instances": 5475,
+   "pixelRatio": 2,
+   "size": [
+    824,
+    1830
+   ],
+   "shadowMap": 1024,
+   "shadows": true,
+   "bench": {
+    "ms": 34381.866666666545,
+    "calls": 213,
+    "triangles": 1183000,
+    "level": "v3.4",
+    "pr": 2,
+    "size": [
+     824,
+     1830
+    ]
+   }
+  }
+ ],
+ "js_heap_MB": 60,
+ "errors": [
+  "warning [.WebGL-0x235c00133000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+  "warning [.WebGL-0x235c00133000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+ ]
+}
