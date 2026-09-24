@@ -1,0 +1,214 @@
+{
+ "levels": {
+  "Road": 0.0,
+  "Ground FFL": 1.0,
+  "West ground FFL": 2.0,
+  "First FFL": 12.416666666666666,
+  "West first FFL": [
+   13.916666666666666,
+   16.916666666666668
+  ],
+  "Second FFL": 23.833333333333332,
+  "West second FFL": 25.75,
+  "Roof slab": 35.25,
+  "Parapet": 39.25
+ },
+ "floor_to_floor_ft": [
+  11.4167,
+  11.4167,
+  11.4167
+ ],
+ "openings_detected": {
+  "front": 24,
+  "rear": 6,
+  "left": 11,
+  "right": 17
+ },
+ "openings_placed": 96,
+ "elevation_scales_px_per_ft": {
+  "front": 29.045,
+  "rear": 31.72,
+  "left": 38.981,
+  "right": 39.618
+ },
+ "elevation_drawn_extent_ft": {
+  "front": 167.4,
+  "rear": 153.3,
+  "left": 124.7,
+  "right": 122.7
+ },
+ "plate_area_sqft": {
+  "GF": 13830.2,
+  "FF": 12173.8,
+  "SF": 11581.5
+ },
+ "model_bbox_ft": [
+  [
+   0.0,
+   0.0,
+   -0.75
+  ],
+  [
+   151.08,
+   129.98,
+   39.25
+  ]
+ ],
+ "building_extent_ft": {
+  "x": [
+   0.0,
+   148.0
+  ],
+  "y": [
+   2.0,
+   129.5
+  ]
+ },
+ "total_triangles": 49068,
+ "parts": [
+  {
+   "part": "Ground_Apron",
+   "tris": 12,
+   "z_min": -0.75,
+   "z_max": 0.0
+  },
+  {
+   "part": "Site_Boundary_Wall",
+   "tris": 48,
+   "z_min": 0.0,
+   "z_max": 8.0
+  },
+  {
+   "part": "GF_Slab",
+   "tris": 2184,
+   "z_min": 0.25,
+   "z_max": 2.0
+  },
+  {
+   "part": "Courtyard_Paving",
+   "tris": 12,
+   "z_min": 0.25,
+   "z_max": 0.5
+  },
+  {
+   "part": "Stairs",
+   "tris": 4236,
+   "z_min": 0.6,
+   "z_max": 35.25
+  },
+  {
+   "part": "GF_Glazing",
+   "tris": 540,
+   "z_min": 0.93,
+   "z_max": 11.16
+  },
+  {
+   "part": "GF_External_Walls",
+   "tris": 3744,
+   "z_min": 1.0,
+   "z_max": 11.67
+  },
+  {
+   "part": "GF_Internal_Walls",
+   "tris": 5280,
+   "z_min": 1.0,
+   "z_max": 11.67
+  },
+  {
+   "part": "Courtyard_Glazing",
+   "tris": 48,
+   "z_min": 1.0,
+   "z_max": 35.0
+  },
+  {
+   "part": "FF_Slab",
+   "tris": 1956,
+   "z_min": 11.67,
+   "z_max": 16.92
+  },
+  {
+   "part": "Roof_Level_12-5_Slab",
+   "tris": 1692,
+   "z_min": 11.92,
+   "z_max": 12.42
+  },
+  {
+   "part": "FF_External_Walls",
+   "tris": 3468,
+   "z_min": 12.42,
+   "z_max": 23.08
+  },
+  {
+   "part": "FF_Internal_Walls",
+   "tris": 5856,
+   "z_min": 12.42,
+   "z_max": 23.08
+  },
+  {
+   "part": "Roof_Level_12-5_Parapet",
+   "tris": 1632,
+   "z_min": 12.42,
+   "z_max": 15.42
+  },
+  {
+   "part": "FF_Glazing",
+   "tris": 444,
+   "z_min": 13.05,
+   "z_max": 20.43
+  },
+  {
+   "part": "SF_Slab",
+   "tris": 2436,
+   "z_min": 23.08,
+   "z_max": 25.75
+  },
+  {
+   "part": "Roof_Level_23-10_Slab",
+   "tris": 1488,
+   "z_min": 23.33,
+   "z_max": 23.83
+  },
+  {
+   "part": "SF_External_Walls",
+   "tris": 3612,
+   "z_min": 23.83,
+   "z_max": 34.5
+  },
+  {
+   "part": "SF_Internal_Walls",
+   "tris": 4548,
+   "z_min": 23.83,
+   "z_max": 34.5
+  },
+  {
+   "part": "Roof_Level_23-10_Parapet",
+   "tris": 216,
+   "z_min": 23.83,
+   "z_max": 26.83
+  },
+  {
+   "part": "SF_Glazing",
+   "tris": 168,
+   "z_min": 25.51,
+   "z_max": 32.57
+  },
+  {
+   "part": "Roof_Level_35-3_Slab",
+   "tris": 2052,
+   "z_min": 34.75,
+   "z_max": 35.25
+  },
+  {
+   "part": "Roof_Level_35-3_Parapet",
+   "tris": 2784,
+   "z_min": 35.25,
+   "z_max": 39.25
+  },
+  {
+   "part": "Roof_Corrugated_Sheet",
+   "tris": 612,
+   "z_min": 35.3,
+   "z_max": 35.7
+  }
+ ]
+}

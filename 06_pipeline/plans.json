@@ -1,0 +1,43 @@
+{
+ "GF": {
+  "grid": [
+   259,
+   302
+  ],
+  "wall_cells": 6416,
+  "plate_cells": 36686,
+  "plate_area_sqft": 9171.5
+ },
+ "FF": {
+  "grid": [
+   259,
+   302
+  ],
+  "wall_cells": 4854,
+  "plate_cells": 17584,
+  "plate_area_sqft": 4396.0
+ },
+ "SF": {
+  "grid": [
+   259,
+   302
+  ],
+  "wall_cells": 3377,
+  "plate_cells": 8333,
+  "plate_area_sqft": 2083.2
+ },
+ "meta": {
+  "pxpf": 41.7,
+  "cell_ft": 0.5,
+  "window": [
+   400,
+   6700,
+   205,
+   5625
+  ],
+  "extent_ft": [
+   151.08,
+   129.98
+  ]
+ }
+}

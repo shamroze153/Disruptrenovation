@@ -1,0 +1,59 @@
+{
+ "openings_placed": 96,
+ "openings_skipped": 0,
+ "nodes": [
+  "Site_Boundary_Wall",
+  "Ground_Apron",
+  "GF_Slab",
+  "GF_External_Walls",
+  "GF_Glazing",
+  "GF_Internal_Walls",
+  "FF_Slab",
+  "FF_External_Walls",
+  "FF_Glazing",
+  "FF_Internal_Walls",
+  "SF_Slab",
+  "SF_External_Walls",
+  "SF_Glazing",
+  "SF_Internal_Walls",
+  "Roof_Level_12-5_Slab",
+  "Roof_Level_12-5_Parapet",
+  "Roof_Level_23-10_Slab",
+  "Roof_Level_23-10_Parapet",
+  "Roof_Level_35-3_Slab",
+  "Roof_Level_35-3_Parapet",
+  "Roof_Corrugated_Sheet",
+  "GF_Stairs",
+  "FF_Stairs",
+  "SF_Stairs",
+  "Courtyard_Paving",
+  "Courtyard_Glazing"
+ ],
+ "bbox_ft": [
+  [
+   0.0,
+   0.0,
+   -0.75
+  ],
+  [
+   151.08,
+   129.98,
+   39.25
+  ]
+ ],
+ "building_extent_ft": {
+  "x": [
+   0.0,
+   148.0
+  ],
+  "y": [
+   2.0,
+   129.5
+  ]
+ },
+ "plate_area_sqft": {
+  "GF": 13830.2,
+  "FF": 12173.8,
+  "SF": 11581.5
+ }
+}
